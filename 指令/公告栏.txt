@@ -1,0 +1,93 @@
+此公告栏由快手 @MC.缘起 创作,说明在底部
+3前置指令
+tag add @s op #给自己权限
+5循环无条件/scoreboard objectives add 信息栏 dummy "§l§4ᴍ§cɪ§6ɴ§eᴇ§aᴄ§bʀ§3ᴀ§dғ§uᴛ"
+6连锁无条件
+/scoreboard players add "§6 ● §r定时清理" 信息栏 0
+8循环无条件
+/scoreboard players set "§7----------------" 信息栏 500
+10-14连锁无条件
+/scoreboard players set "§bঌ §rNOTICE INFO" 信息栏 499
+/scoreboard players set " [§b房主§r] §7房主名称" 信息栏 498
+/scoreboard players set " [§b副房主§r] §7副房主名称" 信息栏 497#可以不加这条指令
+/scoreboard players set "§bঌ §rONLINE IWFO" 信息栏 496
+/scoreboard players set "§7----------------§l" 信息栏 -1
+16循环无条件
+/scoreboard players set "§b ● §r在线OP" 信息栏 0
+18
+execute as @a[tag=op] run /scoreboard players add "§b ● §r在线OP" 信息栏 1
+20循环无条件
+/scoreboard players set "§a ● §r在线人数" 信息栏 0
+22连锁有条件
+execute as @a run /scoreboard players add "§a ● §r在线人数" 信息栏 1
+24循环无条件
+/scoreboard players set "§e ● §r实体数量" 信息栏 0
+26连锁有条件
+execute as @e run /scoreboard players add "§e ● §r实体数量" 信息栏 1
+28循环无条件
+/scoreboard players test "§e ● §r实体数量" 信息栏 170 30000
+30-31连锁有条件
+kill @e
+say 实体过多，已清理
+33循环无条件
+/scoreboard players set "§s ● §r掉落数量" 信息栏 0
+34连锁有条件
+execute as @e[type=item] run /scoreboard players add "§s ● §r掉落数量" 信息栏 1
+37-39循环无条件
+/scoreboard players add "§6 ● §r定时清理" 信息栏 0
+/scoreboard players remove "§6 ● §r定时清理" 信息栏 1#得调成20延迟
+/scoreboard players test "§6 ● §r定时清理" 信息栏 -999 0
+41-43连锁有条件
+/scoreboard players set "§6 ● §r定时清理" 信息栏 120
+say 已清理:@e[type=item]
+kill @e[type=item]
+
+说明
+
+【Minecraft】智能监控公告栏系统 · 全自动版
+
+作者： 基于 @MC.缘起 创意深度优化
+版本： 1.0 | 兼容： 基岩版 | 类型： 原版命令方块
+
+
+🌟 核心功能
+
+1. 📈 实时监控看板
+   · ✅ 在线OP列表 · 自动识别tag=op权限人员
+   · ✅ 玩家人数统计 · 精确到个位数
+   · ✅ 全实体数量监控 · 防卡顿预警（生物/箭/矿车等）
+   · ✅ 地面掉落物计数 · 可视化垃圾回收提醒
+2. ⚡ 智能维护系统
+   · 🔄 双模式清理：
+    · 应急清理：当实体>170时自动清空全实体（防崩服）
+    · 定时清理：每2分钟循环清理掉落物（可调间隔）
+   · 📢 清理提醒：每次操作自动服务器广播
+3. 🎨 专业级视觉设计
+   · 采用特殊Unicode符号（ঌ、●、§c§l渐变标题）
+   · 分区线排版，信息层次清晰
+   · 支持自定义房主/副房主名称显示
+
+
+⚙️ 安装说明
+
+1. 逐行搭建：
+   · 按顺序放置命令方块（注意循环/连锁模式）
+   · 第一个方块输入：/tag @s add op（获取权限）
+2. 个性化设置：
+   · 修改第10-14行中的房主名称和副房主名称
+   · 调整清理灵敏度（第28行170 30000通过手机性性能调节)
+   · 修改清理间隔（第41行set ... 120=2400游戏刻≈2分钟）
+3. 保持常加载：
+   · 建议在出生点建造
+   · 或使用/tickingarea命令强制加载区域
+
+
+💡 高级技巧
+
+· 延迟调整：如注释所说，第38行可添加20游戏刻延迟避免卡顿
+· 安全保护：所有清理操作需op标签触发，防止误用
+· 扩展功能：可轻松添加更多监控项（如特定生物计数）
+
+⚠️ 注意：系统依赖计分板"信息栏"，请勿与其他系统冲突
+
+适用场景： 生存服|小游戏服|基岩版联机

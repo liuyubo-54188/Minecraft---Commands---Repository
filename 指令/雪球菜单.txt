@@ -1,0 +1,71 @@
+此雪球菜单由快手 @MC.缘起 创作,说明在底部
+前置指令2-3
+/scoreboard objectives add 雪球菜单 dummy
+/tag 自己游戏名称 add op,此条指令为添加权限,是经济不然56功能不可以用,想让其他人获得权限，也可以让其他人输入这条指令
+5-7循环无条件
+replaceitem entity @a slot.hotbar 0 snowball 16 0  {"minecraft:item_lock":{"mode":"lock_in_inventory"}}
+scoreboard players set @a[scores={雪球菜单=7}] 雪球菜单 1
+execute at @e[type=snowball] run scoreboard players add @p 雪球菜单 1
+9-10连锁有条件
+playsound random.orb @a[scores={奈何花落=1..}]
+kill @e[type=snowball]
+12循环无条件
+title @a[scores={雪球菜单=1..},rx=90,rxm=85] actionbar 菜单已关闭
+14连锁有条件
+scoreboard players set @a[scores={雪球菜单=1..},rx=90,rxm=85] 雪球菜单 0
+16循环无条件
+tp @a[scores={雪球菜单=1},rx=-85,rxm=-90] 主城坐标
+18-19连锁无条件
+title @a[scores={雪球菜单=1},rx=-85,rxm=-90] title §l§a主城
+scoreboard players set @a[scores={雪球菜单=1},rx=-85] 雪球菜单 0
+21循环无条件
+tp @a[scores={雪球菜单=2},rx=-85,rxm=-90] 生存区坐标
+23-24连锁有条件
+title @a[scores={雪球菜单=2},rx=-85,rxm=-90] title §l§a生存区
+scoreboard players set @a[scores={雪球菜单=2},rx=-85] 雪球菜单 0
+26循环无条件
+tp @a[scores={雪球菜单=3},rx=-85,rxm=-90] 商店坐标
+28-29连锁有条件
+title @a[scores={雪球菜单=3},rx=-85,rxm=-90] title §l§a商店
+scoreboard players set @a[scores={雪球菜单=3},rx=-85] 雪球菜单 0
+31循环无条件
+kill @a[scores={雪球菜单=4},rx=-85,rxm=-90]
+33连锁有条件
+scoreboard players set @a[scores={雪球菜单=4}] 雪球菜单 0
+35循环无条件
+/gamemode c @a[scores={雪球菜单=5},rx=-85,rxm=-90,tag=op]
+37-38连锁有条件
+title @a[scores={雪球菜单=5},rx=-85,rxm=-90] title §l§a设置成功 
+scoreboard players set @a[scores={雪球菜单=5},rx=-85] 雪球菜单 0
+40循环无条件
+/gamemode s @a[scores={雪球菜单=6},rx=-85,rxm=-90,tag=op]
+42-43连锁有条件
+title @a[scores={雪球菜单=6},rx=-85,rxm=-90] title §l§a设置成功
+scoreboard players set @a[scores={雪球菜单=6},rx=-85] 雪球菜单 0
+45-50循环无条件
+titleraw @a[scores={雪球菜单=1}] actionbar {"rawtext":[{"text":"雪球菜单\n§e『传送主城』\n§7『去生存区』"},{"text":"\n『§7传送商店』\n§7『原地升天』"},{"text":"\n『§7创造模式[op]』\n§7『生存模式[op]』§e"},{"text":"\n§l§6抬头§a确定✔\n§6低头§c取消✘"}]}
+titleraw @a[scores={雪球菜单=2}] actionbar {"rawtext":[{"text":"雪球菜单\n§7『传送主城』\n§e『去生存区』"},{"text":"\n§7『§7传送商店』\n§7『原地升天』"},{"text":"\n『§7创造模式[op]』\n§7『生存模式[op]』§e"},{"text":"\n§l§6抬头§a确定✔\n§6低头§c取消✘"}]}
+titleraw @a[scores={雪球菜单=3}] actionbar {"rawtext":[{"text":"雪球菜单\n§7『传送主城』\n§7『去生存区』"},{"text":"\n§e『传送商店』\n§7『原地升天』"},{"text":"\n『§7创造模式[op]』\n§7『生存模式[op]』§e"},{"text":"\n§l§6抬头§a确定✔\n§6低头§c取消✘"}]}
+titleraw @a[scores={雪球菜单=4}] actionbar {"rawtext":[{"text":"雪球菜单\n§7『传送主城』\n§7『去生存区』"},{"text":"\n『§7传送商店』\n§e『原地升天』"},{"text":"\n§7『§7创造模式[op]』\n§7『生存模式[op]』§e"},{"text":"\n§l§6抬头§a确定✔\n§6低头§c取消✘"}]}
+titleraw @a[scores={雪球菜单=5}] actionbar {"rawtext":[{"text":"雪球菜单\n§7『传送主城』\n§7『去生存区』"},{"text":"\n『§7传送商店』\n§7『原地升天』"},{"text":"\n§e『创造模式[op]』\n§7『生存模式[op]』§e"},{"text":"\n§l§6抬头§a确定✔\n§6低头§c取消✘"}]}
+titleraw @a[scores={雪球菜单=6}] actionbar {"rawtext":[{"text":"雪球菜单\n§7『传送主城』\n§7『去生存区』"},{"text":"\n『§7传送商店』\n§7『原地升天』"},{"text":"\n『§7创造模式[op]』\n§e『生存模式[op]』§e"},{"text":"\n§l§6抬头§a确定✔\n§6低头§c取消✘"}]}
+如果出现离得远就会失效的问题,就在指令附近输入这条指令,该指令由@小皮果吖 取得的如果他不允许，我可以删除这条
+/tickingarea add ~25 ~ ~25 ~-24 ~ ~-24
+
+说明
+Minecraft 雪球菜单系统 - 由 @MC.缘起 创作
+
+这是一个高度可定制、基于原版命令块的雪球菜单系统。玩家通过扔雪球打开菜单，抬头/低头选择并确认选项，实现传送、模式切换等功能。
+
+🔥 核心特性
+
+· 无需Mod：完全基于原版命令与计分板。
+· 可视化交互：动态高亮显示当前选项。
+· 权限控制：特定功能（如切换模式）需要 op 标签。
+· 防滥用：菜单雪球无法从背包丢弃。
+#说明由deepseek生成
+作者想说的
+都去给MC.缘起点赞😡😡😡
+他需要一定的指令基础
+其实就是了解命令方块的三个模式
+作者只在快手
